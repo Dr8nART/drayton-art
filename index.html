@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historic Southport Home Engravings | Drayton Hawthorne</title>
+  <meta name="description" content="Custom fine-line engraved tile portraits of historic homes in Southport and Brunswick County, North Carolina — including present-day portraits and carefully interpreted historic reconstructions.">
+  <style>
+    :root{
+      --paper:#f5f0e6;
+      --ink:#25231f;
+      --muted:#6f695f;
+      --line:#b9ae9b;
+      --panel:#fbf8f2;
+      --accent:#3d4b4a;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:Georgia, "Times New Roman", serif;
+      line-height:1.6;
+    }
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:0 auto}
+    .eyebrow{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.78rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:700;
+    }
+    header{
+      border-bottom:1px solid var(--line);
+      background:rgba(245,240,230,.96);
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(8px);
+    }
+    nav{
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.02em;
+      white-space:nowrap;
+    }
+    .brand small{
+      display:block;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:400;
+      font-size:.72rem;
+      letter-spacing:.1em;
+      color:var(--muted);
+      text-transform:uppercase;
+      margin-top:-2px;
+    }
+    .navlinks{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.88rem;
+    }
+    .navlinks a{text-decoration:none}
+    .hero{
+      padding:82px 0 70px;
+      border-bottom:1px solid var(--line);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:54px;
+      align-items:center;
+    }
+    h1,h2,h3{line-height:1.12;margin-top:0}
+    h1{
+      font-size:clamp(2.65rem,6vw,5.9rem);
+      letter-spacing:-.035em;
+      margin-bottom:22px;
+      font-weight:600;
+    }
+    .subhead{
+      font-size:clamp(1.2rem,2vw,1.5rem);
+      color:var(--muted);
+      max-width:720px;
+      margin-bottom:30px;
+    }
+    .hero-copy p{max-width:720px}
+    .button{
+      display:inline-block;
+      margin-top:18px;
+      padding:13px 20px;
+      background:var(--ink);
+      color:var(--paper);
+      text-decoration:none;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:700;
+      border:1px solid var(--ink);
+    }
+    .button.secondary{
+      background:transparent;
+      color:var(--ink);
+      margin-left:10px;
+    }
+    .artframe{
+      border:1px solid var(--ink);
+      padding:16px;
+      background:var(--panel);
+      box-shadow:0 18px 50px rgba(0,0,0,.07);
+    }
+    .placeholder{
+      aspect-ratio:4/5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+      border:1px dashed var(--line);
+      background:
+        linear-gradient(135deg, rgba(37,35,31,.035) 25%, transparent 25%) 0 0/20px 20px,
+        linear-gradient(225deg, rgba(37,35,31,.035) 25%, transparent 25%) 0 0/20px 20px,
+        linear-gradient(315deg, rgba(37,35,31,.035) 25%, transparent 25%) 0 0/20px 20px,
+        linear-gradient(45deg, rgba(37,35,31,.035) 25%, transparent 25%) 0 0/20px 20px;
+      color:var(--muted);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    section{padding:78px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:clamp(2rem,4vw,3.4rem);margin-bottom:18px}
+    .lead{font-size:1.16rem;color:var(--muted);max-width:800px}
+    .cards{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      padding:30px;
+    }
+    .card h3{font-size:1.55rem;margin-bottom:10px}
+    .size{
+      font-family:Arial, Helvetica, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      font-size:.78rem;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .process{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+      margin-top:38px;
+      counter-reset:step;
+    }
+    .step{
+      padding:20px 16px;
+      border-top:2px solid var(--ink);
+      background:rgba(255,255,255,.25);
+    }
+    .step:before{
+      counter-increment:step;
+      content:counter(step, decimal-leading-zero);
+      display:block;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:700;
+      font-size:.78rem;
+      letter-spacing:.12em;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+    .gallery{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .gallery .placeholder{aspect-ratio:4/3}
+    .caption{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.84rem;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .note{
+      margin-top:28px;
+      padding:20px 22px;
+      border-left:4px solid var(--ink);
+      background:var(--panel);
+    }
+
+    .portrait-photo{
+      width:100%;
+      height:auto;
+      display:block;
+      border:1px solid var(--line);
+    }
+    .portrait-caption{
+      margin-top:10px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.8rem;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:46px;
+      align-items:start;
+    }
+    .portrait .placeholder{aspect-ratio:4/5}
+    form{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px 22px;
+      max-width:920px;
+    }
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.88rem;
+      font-weight:700;
+    }
+    input,select,textarea{
+      width:100%;
+      border:1px solid var(--line);
+      background:#fffdf8;
+      color:var(--ink);
+      padding:12px 13px;
+      font:inherit;
+      border-radius:0;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .checks{
+      grid-column:1/-1;
+      display:grid;
+      gap:10px;
+      margin-top:4px;
+    }
+    .check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.84rem;
+      color:var(--muted);
+    }
+    .check input{width:auto;margin-top:4px}
+    button{
+      justify-self:start;
+      border:1px solid var(--ink);
+      background:var(--ink);
+      color:var(--paper);
+      padding:13px 22px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .form-note{
+      grid-column:1/-1;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+    footer{padding:34px 0 50px}
+    footer .wrap{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.82rem;
+      color:var(--muted);
+    }
+
+    .hero-pair{
+      display:grid;
+      grid-template-columns:1.42fr .82fr;
+      gap:12px;
+      align-items:end;
+    }
+    .hero-pair figure,
+    .gallery figure{margin:0}
+    .hero-pair img,
+    .gallery img{
+      width:100%;
+      height:auto;
+      display:block;
+      border:1px solid var(--line);
+      background:var(--panel);
+    }
+    .pair-label{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:var(--muted);
+      margin-top:8px;
+      text-align:center;
+    }
+
+    @media (max-width:850px){
+      header{position:static}
+      .navlinks{display:none}
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .hero-pair{grid-template-columns:1.2fr .8fr}
+      .hero{padding-top:58px}
+      .process{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr}
+    }
+    @media (max-width:620px){
+      .cards,.process,form{grid-template-columns:1fr}
+      .field.full,.checks,.form-note{grid-column:auto}
+      .button.secondary{margin-left:0;display:table}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#top">Historic Southport Home Engravings
+        <small>by Drayton Hawthorne</small>
+      </a>
+      <div class="navlinks">
+        <a href="#idea">The Idea</a>
+        <a href="#process">How It Works</a>
+        <a href="#examples">Examples</a>
+        <a href="#about">About</a>
+        <a href="#visit">Request a Visit</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Southport, North Carolina • Brunswick County</div>
+        <h1>Your home today.<br>And the home it once was.</h1>
+        <p class="subhead">Custom engraved tile portraits of historic homes, created from present-day photography, family photographs, architectural clues, and careful artistic reconstruction.</p>
+        <p>I create each piece personally for local homeowners. The example shown here demonstrates the idea: one engraved portrait of an earlier chapter in a home's history, paired with a smaller portrait of the home as it appears today.</p>
+        <a class="button" href="#visit">Request a Home Visit</a>
+        <a class="button secondary" href="#examples">See Examples</a>
+      </div>
+      <div class="artframe">
+        <div class="hero-pair" aria-label="Historic and present-day engraved tile pair">
+          <figure>
+            <img src="assets/florence-lee-c1907.webp" alt="Historic engraved tile portrait of the Florence Lee Smith House, circa 1907">
+            <figcaption class="pair-label">Circa 1907</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/florence-lee-today.webp" alt="Present-day engraved tile portrait of the Florence Lee Smith House">
+            <figcaption class="pair-label">Today</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="idea">
+    <div class="wrap">
+      <div class="eyebrow">The Idea</div>
+      <h2>Two views of one home.</h2>
+      <p class="lead">For many Southport homes, the most interesting story is the relationship between the house people know today and the house as it may have appeared years—or generations—earlier.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="size">8 × 12 inch engraved tile</div>
+          <h3>Historic Home Portrait</h3>
+          <p>An artistic rendering of an earlier appearance of your home. Whenever possible, I work from old family photographs or other visual evidence. When photographs do not exist, I can develop a carefully considered AI-assisted reconstruction using the home's architecture, documented changes, and other available references.</p>
+        </article>
+
+        <article class="card">
+          <div class="size">4 × 6 inch engraved tile</div>
+          <h3>Present-Day Home Portrait</h3>
+          <p>A companion engraving of the house as it looks now. I photograph the home myself so the finished image can be composed specifically for engraving rather than being limited by an existing snapshot.</p>
+        </article>
+      </div>
+
+      <div class="note">
+        <strong>Before anything is engraved, you see the proposed artwork.</strong>
+        I normally prepare one carefully chosen version for approval and include one reasonable revision for factual or architectural corrections. This keeps the process personal and manageable while still giving you a chance to catch an important detail.
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="eyebrow">How It Works</div>
+      <h2>A personal local service.</h2>
+      <p class="lead">No uploading photographs into a website and no complicated online ordering. I prefer to meet the homeowner and see the house.</p>
+
+      <div class="process">
+        <div class="step"><strong>We talk.</strong><br>You tell me about the house and what you hope to preserve or recreate.</div>
+        <div class="step"><strong>I visit.</strong><br>I photograph the home and look at any older family photographs you may have.</div>
+        <div class="step"><strong>I scan references.</strong><br>If useful old photographs exist, I can scan them during the visit so they never need to leave your possession.</div>
+        <div class="step"><strong>I create the artwork.</strong><br>I develop the historic and/or present-day composition in my signature fine-line engraving style.</div>
+        <div class="step"><strong>You approve it.</strong><br>I show you the proposed image before the final tile is engraved.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="examples">
+    <div class="wrap">
+      <div class="eyebrow">Examples of My Work</div>
+      <h2>Local history, translated into engraving.</h2>
+      <p class="lead">The finished work is a physical engraved tile, not simply a digital image. These local examples show the level of architectural detail and character I try to preserve in each piece.</p>
+
+      <div class="gallery">
+        <figure>
+          <img src="assets/brunswick-jail.webp" alt="Engraved tile depicting the Old Brunswick County Jail">
+          <figcaption class="caption">Old Brunswick County Jail — detailed local architectural engraving.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/amuzu.webp" alt="Engraved tile depicting the AMUZU Theatre in Southport, North Carolina">
+          <figcaption class="caption">AMUZU Theatre — a recognizable Southport landmark rendered in fine-line engraving.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/northrop-house.webp" alt="Engraved tile showing the ornate entrance and porch of Northrop House">
+          <figcaption class="caption">Northrop House — an example of the architectural and personal detail that can be preserved in a home portrait.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="portrait">
+        <div class="artframe">
+          <img class="portrait-photo" src="assets/drayton-hawthorne.webp" alt="Drayton Hawthorne with examples of his engraved Southport tile artwork">
+          <div class="portrait-caption">Drayton Hawthorne with examples of his Southport engraving work.</div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow">About Drayton</div>
+        <h2>Made here, for homes here.</h2>
+        <p>I am Drayton Hawthorne. I have lived and worked in this area for many years and have developed a particular interest in the buildings, stories, and visual history of Southport.</p>
+        <p>My tile work combines a developed fine-line engraving style with modern digital tools. For historic reconstructions, I use AI as a drawing and visualization aid—not as a substitute for evidence. Old photographs, architectural features, homeowner knowledge, and documented changes remain the most important guides.</p>
+        <p>The finished artwork is intended to be both personal and attractive: something that records the house as it stands today while also giving a thoughtful glimpse of an earlier chapter in its life.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="eyebrow">Southport & Brunswick County</div>
+      <h2>Request a Home Visit</h2>
+      <p class="lead">Tell me a little about your home. There is no obligation, and you do not need to have old photographs or know the home's full history before getting in touch.</p>
+
+      <!--
+        FORM SETUP:
+        Replace YOUR_FORMSPREE_ENDPOINT below with the endpoint supplied by your Formspree account.
+        Example format: https://formspree.io/f/xxxxxxxx
+      -->
+      <form action="YOUR_FORMSPREE_ENDPOINT" method="POST">
+        <div class="field">
+          <label for="name">Your name *</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number *</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label for="email">Email address *</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+          <span class="form-note" data-fs-error="email"></span>
+        </div>
+
+        <div class="field">
+          <label for="contact">Preferred contact</label>
+          <select id="contact" name="preferred_contact">
+            <option>Email</option>
+            <option>Phone call</option>
+            <option>Text message</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="address">Property address *</label>
+          <input id="address" name="property_address" type="text" required autocomplete="street-address">
+        </div>
+
+        <div class="field">
+          <label for="age">Approximate age of the home</label>
+          <input id="age" name="approximate_home_age" type="text" placeholder="Example: circa 1905, 1930s, or not sure">
+        </div>
+
+        <div class="field">
+          <label for="photos">Do you have older photographs?</label>
+          <select id="photos" name="older_photographs">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="interest">What are you interested in?</label>
+          <select id="interest" name="interest">
+            <option>Historic + Present-Day Pair</option>
+            <option>Historic Home Portrait</option>
+            <option>Present-Day Home Portrait</option>
+            <option>Not sure — I would like to talk</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="message">Anything you would like me to know?</label>
+          <textarea id="message" name="message" placeholder="For example: known changes to the house, family history, an old porch or addition, or what you would especially like to see represented."></textarea>
+        </div>
+
+        <div class="checks">
+          <label class="check">
+            <input type="checkbox" name="contact_permission" required>
+            <span>I give permission to be contacted about this request.</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="reconstruction_acknowledgement">
+            <span>I understand that when complete historic photographs do not exist, an earlier appearance may be an artistic reconstruction based on available evidence rather than a documentary image.</span>
+          </label>
+        </div>
+
+        <button type="submit">Send My Request</button>
+        <div class="form-note">No photographs are uploaded through this website. If we decide to proceed, I can photograph the house and scan useful family photographs during a visit.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© Drayton Hawthorne • drayton.art</div>
+    <div>Historic Southport Home Engravings • Southport, North Carolina & Brunswick County</div>
+  </div>
+</footer>
+</body>
+</html>
